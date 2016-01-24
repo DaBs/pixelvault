@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="row">
+    <div class="large-12 columns">
+      <header class="c-vault-filtering">
+        <h1><i class="fa fa-database"></i> ITEM VAULT</h1>
+        <div class="row collapse">
+          <!--
+          <div class="large-2 columns">
+            <label for="layout">
+              <select ng-model="itemLayout" name="layout" ng-init="itemLayout = 'medium'">
+                <option value="small">Small layout</option>
+                <option value="medium">Medium layout</option>
+                <option value="large">Large layout</option>
+              </select>
+            </label>
+
+          </div>
+          -->
+          <div class="large-8 columns">
+            <input type="search" name="search" ng-model="searchText" value="*">
+          </div>
+          <div class="large-4 columns">
+            <div class="row collapse">
+              <div class="large-4 columns">
+                <label class="prefix">Sort by: </label>
+              </div>
+              <div class="large-4 columns">
+                <select ng-model="sorting" ng-init="sorting = 'hardData.price.median_price'">
+                  <option ng-value="'hardData.price.median_price'" selected>Price</option>
+                  <option ng-value="'raritySort[\'softData.rarity_color\']'" disabled>Rarity (coming soon)</option>
+                </select>
+              </div>
+              <div class="large-4 columns">
+                <select ng-model="sortingWay" ng-init="sortingWay = true" ng-options="boolToStr(item) for item in [true, false]">
+                  <option ng-value="false">ASC</option>
+                  <option ng-value="true">DESC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" ng-click="advSearch = !advSearch"><i ng-class="advSearch == true ? 'fa-arrow-up' : 'fa-arrow-down'" class="fa"></i> Advanced search</a>
+        <div ng-show="advSearch" class="c-vault-filtering__adv-search">
+          <div class="row">
+            <div class="large-6 columns">
+              <fieldset>
+                <legend>Price Range:</legend>
+                <div>
+                  <rzslider rz-slider-floor="0" rz-slider-ceil="360" rz-slider-model="priceRange.min" rz-slider-high="priceRange.max"></rzslider>
+                </div>
+                <div class="row">
+                  <div class="large-6 columns">
+                    <div class="row collapse">
+                      <div class="large-3 columns">
+                        <span class="prefix">Min:</span>
+                      </div>
+                      <div class="large-7 columns">
+                        <input type="number" ng-model="priceRange.min" />
+                      </div>
+                      <div class="large-2 columns">
+                        <span class="postfix">&#8364;</span>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div class="large-6 columns">
+                    <div class="row collapse">
+                      <div class="large-3 columns">
+                        <span class="prefix">Max:</span>
+                      </div>
+                      <div class="large-7 columns">
+                        <input type="number" ng-model="priceRange.max" />
+                      </div>
+                      <div class="large-2 columns">
+                        <span class="postfix">&#8364;</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--<label>Min.
+                  <input ng-model="priceRange.min" type="number" step="0.01">
+                </label>
+                <label>Max.
+                  <input ng-model="priceRange.max" type="number">
+                </label>-->
+              </fieldset>
+            </div>
+            <div class="large-6 columns">
+              <fieldset class="rarity-range">
+                <legend>Rarity Range:</legend>
+                <div>
+                  <rzslider rz-slider-floor="2" rz-slider-ceil="7" rz-slider-model="rarityRange.max" rz-slider-high="rarityRange.min"></rzslider>
+                </div>
+                <div class="row">
+                  <div class="large-6 columns">
+                    <div class="row collapse">
+                      <div class="large-4 columns">
+                        <span class="prefix">Highest:</span>
+                      </div>
+                      <div class="large-8 columns">
+                        <span class="rarity-tag" style="background-color: #{{rarities[rarityRange.max].color}}">{{rarities[rarityRange.max].name}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="large-6 columns">
+                    <div class="row collapse">
+                      <div class="large-4 columns">
+                        <span class="prefix">Lowest:</span>
+                      </div>
+                      <div class="large-8 columns">
+                        <span class="rarity-tag" style="background-color: #{{rarities[rarityRange.min].color}}">{{rarities[rarityRange.min].name}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+        <ul class="o-list o-list--inline c-vault medium">
+
+          <li class="o-list__item c-item" ng-repeat="item in filteredItems = (items | filter:searchFilter | rangeFilter: priceRange | rarityFilter: rarityRange | orderBy: sorting:sortingWay)">
+              <div class="c-item__rarity-info" style="background-color: #{{item.softData.rarity_color}}"></div>
+              <img src="http://steamcommunity-a.akamaihd.net/economy/image/{{item.softData.icon_url.normal}}" />
+              <h5 style="color: #{{item.softData.name_color}};">{{item.softData.market_name}}</h5>
+              <a href="#" class="button small">Withdraw for <span>{{item.hardData.price.median_price /  100}}</span>&#8364;</a>
+          </li>
+          <h1 ng-show="!filteredItems.length">No results found</h1>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

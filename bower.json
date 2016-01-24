@@ -1,0 +1,15 @@
+{
+  "name": "pixelvault-app",
+  "version": "0.4.0",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-animate": "~1.4.6",
+    "angular-loading-bar": "~0.8.0",
+    "angular-route": "~1.4.5",
+    "angularjs-slider": "~0.1.29",
+    "jquery": "~2.1.4",
+    "jquery-mousewheel": "~3.1.13",
+    "simplr-smoothscroll": "~1.0.1",
+    "angular-scroll-glue": "~2.0.6"
+  }
+}

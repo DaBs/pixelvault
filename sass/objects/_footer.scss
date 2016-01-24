@@ -1,0 +1,8 @@
+footer {
+  body > & {
+    height: 200px;
+    background-color: rgba(255,255,255,.8);
+    margin-top: 150px;
+    width: 100%;
+  }
+}

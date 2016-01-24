@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+
+    <title>The Pixel Vault</title>
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../assets/libs/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="../assets/libs/angularjs-slider/dist/rzslider.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/app.css" />
+  </head>
+  <body ng-app="pixelvaultApp" ng-controller="MainController">
+    <header ng-show="loggedIn" class="fixed">
+      <div class="row">
+        <div class="large-12 columns">
+          <nav class="top-bar" data-topbar role="navigation">
+            <section class="top-bar-section">
+              <!-- Right Nav Section -->
+              <ul class="right">
+                <li><a href="#">Account balance: <span ng-bind="user.total_value / 100"></span>&#8364;</a></li>
+                <li class="has-dropdown">
+                  <a is-active-nav href="#"><img src="{{user.avatar}}" /> {{user.name}}</a>
+                  <ul class="dropdown">
+                    <li><a is-active-nav href="/account/history"><i class="fa fa-exchange"></i> Withdraw/deposit history</a></li>
+                    <li><a is-active-nav href="/account/settings"><i class="fa fa-wrench"></i> Settings</a></li>
+                    <li><a is-active-nav href="/help"><i class="fa fa-question-circle"></i> Help/FAQ</a></li>
+                    <li><a is-active-nav href="/auth/logout" target="_self"><i class="fa fa-sign-out"></i> Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <!-- Left Nav Section -->
+              <ul class="left">
+                <li><div class="c-logo c-logo--small"></div></li>
+                <li><a is-active-nav href="/vault"><i class="fa fa-database"></i> Vault</a></li>
+                <li><a is-active-nav href="/deposit"><i class="fa fa-arrow-circle-o-right"></i> Deposit</a></li>
+              </ul>
+            </section>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div ng-view class="fade"></div>
+    </main>
+    <!-- bower:js -->
+    <script src="../assets/libs/angular/angular.js"></script>
+    <script src="../assets/libs/angular-animate/angular-animate.js"></script>
+    <script src="../assets/libs/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="../assets/libs/angular-route/angular-route.js"></script>
+    <script src="../assets/libs/angularjs-slider/rzslider.js"></script>
+    <script src="../assets/libs/jquery/dist/jquery.js"></script>
+    <script src="../assets/libs/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <script src="../assets/libs/simplr-smoothscroll/lib/jquery.simplr.smoothscroll.min.js"></script>
+    <script src="../assets/libs/angular-scroll-glue/src/scrollglue.js"></script>
+    <!-- endbower -->
+    <script src="../js/app.js"></script>
+  </body>
+</html>

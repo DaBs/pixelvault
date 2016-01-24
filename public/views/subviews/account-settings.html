@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="c-settings">
+        <header>
+          <h1><i class="fa fa-wrench"></i> Settings</h1>
+        </header>
+        <section>
+          <div class="row">
+            <div class="large-12 columns">
+              <button class="button expand small green" ng-click="updateProfile()">{{saveText}}</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-6 columns">
+              <fieldset>
+                <legend>Steam Trade URL</legend>
+                <input type="text" ng-model="user.tradeUrl" placeholder="Enter tradeurl here"/><a class="button expand small" target="_blank" ng-href="{{user.profileUrl}}/tradeoffers/privacy">Find your trade URL here</a>
+              </fieldset>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.c-logo {
+  &--small {
+    width: 3.125rem;
+    height: 3.125rem;
+    background-size: 36px 29px;
+    background-image: url('../img/safeclosed.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    &:hover {
+      background-image: url('../img/safeopen.png');
+    }
+  }
+}

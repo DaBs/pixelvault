@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="large-12 columns">
+      <header>
+        <h1><i class="fa fa-exchange"></i> Withdraw and deposit history:</h1>
+      </header>
+      <section>
+        <ul class="o-list o-list--box c-history-list">
+          <li class="o-list__item" ng-repeat="trade in trades">
+            <time>{{trade.created | limitTo: 10}}</time>
+            <div class="row collapse">
+              <div class="large-3 columns">
+                <h5>Value:</h5>
+                <span class="{{trade.value > 0 ? 'pos' : 'neg'}}">{{trade.value > 0 ? '+' : '-'}}</span>
+                <p>{{trade.value / 100}}&#8364;</p>
+              </div>
+              <div class="large-9 columns">
+                <h5>Items:</h5>
+                <ul class="o-list o-list--inline">
+                  <li class="list__item" ng-repeat="item in trade.items_deposited" style="border-color: #{{item.softData.rarity_color}}">
+                    <a href="/item/{{item._id}}">
+                      <img src="http://steamcommunity-a.akamaihd.net/economy/image/{{item.softData.icon_url.normal}}" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>

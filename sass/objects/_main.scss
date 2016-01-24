@@ -1,0 +1,9 @@
+main {
+  body > & {
+    padding-top: 80px;
+
+    @media (max-width: $screen--small) {
+      padding-top: 50px;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.c-vault-filtering {
+  padding: 10px 30px;
+  background-color: rgba(255,255,255,.9);
+  margin-bottom: 40px;
+  transition: all 0.4s linear;
+  h1 {
+    display: block;
+    text-align: center;
+  }
+  a {
+    text-align: center;
+    display: block;
+  }
+
+  input {
+    &[type="radio"] {
+      display: none;
+    }
+  }
+
+  &__adv-search {
+    opacity: 1;
+    transition: 0.4s linear all;
+    &.ng-hide {
+      opacity: 0;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="intro">
+      <img src="/img/safeopen.png">
+      <h1>Welcome <span ng-if="loggedIn == false">to the Pixel Vault</span><span ng-if="loggedIn == true">back, {{user.name}}</span></h1>
+      <a ng-if="loggedIn == false" href='/auth/steam' target="_self">Log in with Steam <i class="fa fa-steam-square"></i></a>
+      <a ng-if="loggedIn == true" href='/vault'>Go to the vault <i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>

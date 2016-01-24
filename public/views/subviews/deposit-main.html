@@ -1,0 +1,84 @@
+<div class="container c-steps" ng-class="{'error': msg !== ''};">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="c-steps__msgs">
+        <h1 ng-bind="msg"></h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <header>
+        <h1>Deposit items</h1>
+      </header>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <ul class="c-steps__nav rounded button-group even-3">
+        <li ng-class="{active: currentStep == 1}">Step 1</li>
+        <li ng-class="{active: currentStep == 2}">Step 2</li>
+        <li ng-class="{active: currentStep == 3}">Step 3</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <section>
+        <div class="c-steps__slides">
+          <ul>
+            <li ng-class="{active: currentStep == 1}">
+              <div>
+                <h1>Pick items (value: {{totalValue/100}}&#8364;)</h1>
+                <button class="purple small right" ng-disabled="!step1" ng-click="currentStep = 2">Next</button>
+                <div class="pickWindow">
+                  <ul class="small o-list o-list--inline">
+                    <li ng-repeat="item in inventory" class="o-list__item c-item">
+                      <div class="c-item__rarity-info" style="background-color: #{{item.rarity_color}}">
+                        <h5 style="color: #{{item.name_color}};">{{item.market_name}}</h5>
+                      </div>
+                      <img src="http://steamcommunity-a.akamaihd.net/economy/image/{{item.icon_url.normal}}" />
+                      <div>
+                        <input type="checkbox" ng-model="item.selected" name="item{{$index}}" />
+                        <label for="item{{$index}}"><span>Value: </span><span ng-bind="item.price.median_price"></span></label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li ng-class="{active: currentStep == 2}">
+              <div class="{{currentStatus}}">
+                <h1>Send trade offer</h1>
+                <button class="blue small left" ng-click="currentStep = 1" ng-disabled="currentStatus != 'not_started'">Previous</button>
+                <div class="botChat">
+                  <div class="botChat__window">
+                    <div class="botChat__window__msgs">
+                      <div class="msg {{message.side}}" ng-repeat="message in botMessages">
+                        <div style="background-image: url('{{message.img}}');"></div>
+                        <p>[{{message.time}}] {{message.message}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="botChat__finalMsg">
+                    <h1><i class="fa {{finalMsg.icon}}"></i> {{finalMsg.heading}}</h1>
+                    <p>{{finalMsg.text}}</p>
+                    <a href="{{finalMsg.redirUrl}}" target="{{(currentStatus === 'err') ? '_self' : '_blank'}}" ng-click="currentStep = 3">{{finalMsg.redirText}}</a>
+                  </div>
+                </div>
+                <button class="green big tradeoffer" ng-click="changeStatus('started')">Wake the bot and send tradeoffer for {{totalValue/100}}&#8364;</button>
+              </div>
+            </li>
+            <li ng-class="{active: currentStep == 3}">
+              <div>
+                <h1>Confirming trade offer</h1>
+                <div class="boxLoading">
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
