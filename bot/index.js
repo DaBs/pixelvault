@@ -23,7 +23,7 @@ var admin = '76561198026936299'; // put your steamid here so the bot can accept 
 
 var logOnOptions = {
   account_name: 'thepixelbank',
-  password: 'F0kuscl@n442Steam'
+  password: 'redacted'
 };
 
 var authCode = '5P65P'; // code received by email
